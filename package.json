@@ -12,7 +12,10 @@
   "engines": {
     "node": ">=4"
   },
-  "files": ["index.js"],
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "main": "dist/index.js",
   "keywords": [
     "emoj",
     "emoji",
@@ -24,5 +27,9 @@
     "find",
     "cerebro",
     "cerebro-plugin"
-  ]
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-react": "^6.16.0"
+  }
 }
