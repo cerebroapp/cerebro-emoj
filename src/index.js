@@ -31,6 +31,7 @@ const emojiPlugin = ({term, display, actions}) => {
       const all = emojis.join('');
       const items = emojis.map(emoji => ({
         title: all,
+        clipboard: all,
         getPreview: () => <Preview emojis={emojis} copy={actions.copyToClipboard} />
       }));
 
