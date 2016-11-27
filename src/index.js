@@ -1,5 +1,8 @@
 'use strict';
 
+const React = require('react');
+const Emoji = require('./Emoji');
+
 const emojiPlugin = ({term, display}) => {
   const match = term.match(/^emoji?\s(.+)/);
   if (match) {
@@ -11,7 +14,7 @@ const emojiPlugin = ({term, display}) => {
         const items = data.results.map(x => ({
           title: x.text,
           clipboard: x.text,
-          getPreview: () => `<span style='font-size: 6em;'>${x.text}</span>`
+          getPreview: () => <Emoji emoji={x.text} />
         }));
 
         display(items);
