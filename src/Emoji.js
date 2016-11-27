@@ -1,7 +1,20 @@
 const React = require('react');
 
-const style = {fontSize: '6em'};
+/**
+ * CSS Styles for emoji block
+ *
+ * @type {Object}
+ */
+const style = {
+  display: 'inline-block',
+  width: '75px',
+  height: '75px',
+  lineHeight: '75px',
+  textAlign: 'center',
+  fontSize: '3em',
+  border: 'var(--main-border)'
+};
 
-module.exports = (props) => (
-  <span style={style}>{props.emoji}</span>
+module.exports = ({emoji}) => (
+  <div style={style}>{emoji}</div>
 );

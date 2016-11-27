@@ -1,7 +1,7 @@
 'use strict';
 
 const React = require('react');
-const Emoji = require('./Emoji');
+const Preview = require('./Preview');
 const memoize = require('memoizee');
 
 /**
@@ -28,10 +28,10 @@ const emojiPlugin = ({term, display}) => {
   const match = term.match(/^emoji?\s(.+)/);
   if (match) {
     cachedFetchEmojis(match[1]).then(emojis => {
+      const all = emojis.join('');
       const items = emojis.map(emoji => ({
-        title: emoji,
-        clipboard: emoji,
-        getPreview: () => <Emoji emoji={emoji} />
+        title: all,
+        getPreview: () => <Preview emojis={emojis} />
       }));
 
       display(items);
