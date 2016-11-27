@@ -10,6 +10,7 @@ const emojiPlugin = ({term, display}) => {
       .then(data => {
         const items = data.results.map(x => ({
           title: x.text,
+          clipboard: x.text,
           getPreview: () => `<span style='font-size: 6em;'>${x.text}</span>`
         }));
 
