@@ -1,0 +1,28 @@
+{
+  "name": "cerebro-emoj",
+  "version": "0.0.1",
+  "description": "Cerebro plugin to find relevant emoji from text",
+  "license": "MIT",
+  "repository": "KELiON/cerebro-emoj",
+  "author": {
+    "name": "Alexandr Subbotin",
+    "email": "kelionweb@gmail.com",
+    "url": "asubbotin.ru"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "files": ["index.js"],
+  "keywords": [
+    "emoj",
+    "emoji",
+    "emojis",
+    "smiley",
+    "emoticon",
+    "search",
+    "detect",
+    "find",
+    "cerebro",
+    "cerebro-plugin"
+  ]
+}
