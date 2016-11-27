@@ -2,23 +2,40 @@
 
 const React = require('react');
 const Emoji = require('./Emoji');
+const memoize = require('memoizee');
+
+/**
+ * Fetch emojis from getdango API
+ *
+ * @param  {Function} searchTerm
+ * @return {Promise}
+ */
+const fetchEmojis = searchTerm => {
+  const q = encodeURIComponent(searchTerm);
+  return fetch(`http://emoji.getdango.com/api/emoji?q=${q}`)
+    .then(response => response.json())
+    .then(data => data.results.map(x => x.text))
+};
+
+/**
+ * Version of fetchEmojis with caching
+ *
+ * @type {Function}
+ */
+const cachedFetchEmojis = memoize(fetchEmojis);
 
 const emojiPlugin = ({term, display}) => {
   const match = term.match(/^emoji?\s(.+)/);
   if (match) {
-    const searchTerm = match[1];
-    const q = encodeURIComponent(searchTerm);
-    fetch(`http://emoji.getdango.com/api/emoji?q=${q}`)
-      .then(response => response.json())
-      .then(data => {
-        const items = data.results.map(x => ({
-          title: x.text,
-          clipboard: x.text,
-          getPreview: () => <Emoji emoji={x.text} />
-        }));
+    cachedFetchEmojis(match[1]).then(emojis => {
+      const items = emojis.map(emoji => ({
+        title: emoji,
+        clipboard: emoji,
+        getPreview: () => <Emoji emoji={emoji} />
+      }));
 
-        display(items);
-      });
+      display(items);
+    });
   }
 };
 
