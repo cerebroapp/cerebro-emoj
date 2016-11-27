@@ -1,6 +1,6 @@
 {
   "name": "cerebro-emoj",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cerebro plugin to find relevant emoji from text",
   "license": "MIT",
   "repository": "KELiON/cerebro-emoj",
