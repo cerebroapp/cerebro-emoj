@@ -12,9 +12,10 @@ const style = {
   lineHeight: '75px',
   textAlign: 'center',
   fontSize: '3em',
-  border: 'var(--main-border)'
+  border: 'var(--main-border)',
+  cursor: 'pointer'
 };
 
-module.exports = ({emoji}) => (
-  <div style={style}>{emoji}</div>
+module.exports = ({emoji, onClick}) => (
+  <div style={style} onClick={onClick}>{emoji}</div>
 );

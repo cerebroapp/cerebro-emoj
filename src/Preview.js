@@ -5,8 +5,8 @@ const styles = {
   textAlign: 'center'
 }
 
-module.exports = ({emojis}) => (
+module.exports = ({emojis, copy}) => (
   <div style={styles}>
-    {emojis.map(e => <Emoji emoji={e} />)}
+    {emojis.map(e => <Emoji emoji={e} onClick={() => copy(e)} />)}
   </div>
 )

@@ -24,14 +24,14 @@ const fetchEmojis = searchTerm => {
  */
 const cachedFetchEmojis = memoize(fetchEmojis);
 
-const emojiPlugin = ({term, display}) => {
+const emojiPlugin = ({term, display, actions}) => {
   const match = term.match(/^emoji?\s(.+)/);
   if (match) {
     cachedFetchEmojis(match[1]).then(emojis => {
       const all = emojis.join('');
       const items = emojis.map(emoji => ({
         title: all,
-        getPreview: () => <Preview emojis={emojis} />
+        getPreview: () => <Preview emojis={emojis} copy={actions.copyToClipboard} />
       }));
 
       display(items);
