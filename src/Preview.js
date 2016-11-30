@@ -7,6 +7,6 @@ const styles = {
 
 module.exports = ({emojis, copy}) => (
   <div style={styles}>
-    {emojis.map(e => <Emoji emoji={e} onClick={() => copy(e)} />)}
+    {emojis.map(e => <Emoji emoji={e} key={e} onClick={() => copy(e)} />)}
   </div>
 )
