@@ -1,3 +1,6 @@
 {
-  "presets": ["react"]
+  "plugins": [
+    "transform-react-jsx",
+    "syntax-jsx"
+  ]
 }

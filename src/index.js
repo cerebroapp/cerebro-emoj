@@ -2,7 +2,7 @@
 
 const React = require('react');
 const Preview = require('./Preview');
-const memoize = require('memoizee');
+const { memoize } = require('cerebro-tools');
 
 /**
  * Fetch emojis from getdango API

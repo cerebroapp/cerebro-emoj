@@ -13,7 +13,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "build": "babel src --out-dir dist"
+    "build": "webpack"
   },
   "main": "dist/index.js",
   "keywords": [
@@ -29,11 +29,14 @@
     "cerebro-plugin"
   ],
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-react": "^6.16.0"
-  },
-  "dependencies": {
-    "memoizee": "^0.4.1",
-    "react": "^15.4.1"
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "css-loader": "^0.26.0",
+    "react": "^15.4.1",
+    "cerebro-tools": "^0.1.0",
+    "style-loader": "^0.13.1",
+    "webpack": "2.1.0-beta.27"
   }
 }
