@@ -41,5 +41,7 @@ const emojiPlugin = ({term, display, actions}) => {
 };
 
 module.exports = {
+  name: 'Emoj',
+  keyword: 'emoj',
   fn: emojiPlugin
 }
