@@ -31,6 +31,7 @@ const fn = ({term, display, actions}) => {
     cachedFetchEmojis(match[1]).then(emojis => {
       const all = emojis.join('');
       const items = emojis.map(emoji => ({
+        icon,
         title: all,
         clipboard: all,
         getPreview: () => <Preview emojis={emojis} copy={actions.copyToClipboard} />
