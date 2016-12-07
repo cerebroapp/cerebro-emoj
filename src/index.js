@@ -4,6 +4,7 @@ const React = require('react');
 const Preview = require('./Preview');
 const icon = require('./plugin-icon.png');
 const { memoize } = require('cerebro-tools');
+const id = 'emoj';
 
 /**
  * Fetch emojis from getdango API
@@ -26,25 +27,32 @@ const fetchEmojis = searchTerm => {
 const cachedFetchEmojis = memoize(fetchEmojis);
 
 const fn = ({term, display, actions}) => {
-  const match = term.match(/^emoji?\s(.+)/);
+  let match = term.match(/^emoji?\s(.+)$/);
+  match = match || term.match(/^(.+)\semoji?$/);
   if (match) {
-    cachedFetchEmojis(match[1]).then(emojis => {
-      const all = emojis.join('');
-      const items = emojis.map(emoji => ({
-        icon,
-        title: all,
-        clipboard: all,
-        getPreview: () => <Preview emojis={emojis} copy={actions.copyToClipboard} />
-      }));
-
-      display(items);
+    const searchTerm = match[1];
+    display({
+      id, icon,
+      title: `Looking for ${searchTerm} emojis...`
+    });
+    cachedFetchEmojis(searchTerm).then(emojis => {
+      const title = emojis.join('');
+      display({
+        id, icon, title,
+        clipboard: title,
+        getPreview: () => (
+          <Preview
+            emojis={emojis}
+            copy={actions.copyToClipboard}
+          />
+        )
+      });
     });
   }
 };
 
 module.exports = {
-  icon,
-  fn,
+  icon, fn,
   name: 'Find relevant emoji',
   keyword: 'emoj'
 }
