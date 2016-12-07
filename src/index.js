@@ -2,6 +2,7 @@
 
 const React = require('react');
 const Preview = require('./Preview');
+const icon = require('./plugin-icon.png');
 const { memoize } = require('cerebro-tools');
 
 /**
@@ -24,7 +25,7 @@ const fetchEmojis = searchTerm => {
  */
 const cachedFetchEmojis = memoize(fetchEmojis);
 
-const emojiPlugin = ({term, display, actions}) => {
+const fn = ({term, display, actions}) => {
   const match = term.match(/^emoji?\s(.+)/);
   if (match) {
     cachedFetchEmojis(match[1]).then(emojis => {
@@ -41,7 +42,8 @@ const emojiPlugin = ({term, display, actions}) => {
 };
 
 module.exports = {
-  name: 'Emoj',
-  keyword: 'emoj',
-  fn: emojiPlugin
+  icon,
+  fn,
+  name: 'Find relevant emoji',
+  keyword: 'emoj'
 }
