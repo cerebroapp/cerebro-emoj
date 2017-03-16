@@ -43,7 +43,7 @@ const fn = ({term, display, actions}) => {
         getPreview: () => (
           <Preview
             emojis={emojis}
-            copy={actions.copyToClipboard}
+            actions={actions}
           />
         )
       });
