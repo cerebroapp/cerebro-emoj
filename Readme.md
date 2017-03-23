@@ -1,5 +1,7 @@
 # cerebro-emoj 
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/KELiON/cerebro-emoj.svg)](https://greenkeeper.io/)
+
 > [Cerebro](http://www.cerebroapp.com) plugin to find relevant emoji from text
 
 ![](screenshot.png)
